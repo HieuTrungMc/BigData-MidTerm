@@ -1,0 +1,6 @@
+scrapy==2.12.0
+pymongo 
+mysql-connector-python
+redis
+flask
+pymongo

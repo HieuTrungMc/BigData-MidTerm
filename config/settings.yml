@@ -1,0 +1,33 @@
+# scrapy:
+#   bot_name: crawlers
+#   spider_modules: ['crawlers.spiders']
+#   new_spider_module: 'crawlers.spiders'
+#   user_agent: 'crawlers (+http://www.example.com)'
+#   obey_robots_txt: True
+#   concurrent_requests: 16
+#   download_delay: 1
+#   default_request_headers:
+#     Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+#     Accept-Language: 'en'
+
+#paths:
+#  csv: '../data/csv'
+#  txt: '../data/txt'
+version: '3.8'
+
+services:
+  web:
+    image: python:3.10-slim
+    container_name: crawler
+    ports:
+      - "8000:8000"
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - SCRAPY_SETTINGS_MODULE=crawlers.settings
+      - PYTHONUNBUFFERED=1
+    command:
+      - scrapy
+      - crawl
+      - batdongsan
